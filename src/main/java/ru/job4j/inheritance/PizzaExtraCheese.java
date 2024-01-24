@@ -1,7 +1,7 @@
 package ru.job4j.inheritance;
 
 public class PizzaExtraCheese extends Pizza {
-    static final String NAME = "extra cheese";
+    private static final String NAME = "extra cheese";
 
     @Override
     public String name() {
