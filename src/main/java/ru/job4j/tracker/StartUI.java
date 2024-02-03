@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-import java.time.format.DateTimeFormatter;
+
 import java.util.Scanner;
 
 public class StartUI {
@@ -9,7 +9,7 @@ public class StartUI {
         while (run) {
             showMenu();
             System.out.print("Выбрать: ");
-            int select = scanner.nextInt();
+            int select = Integer.parseInt(scanner.nextLine());
             if (select != 6) {
                 System.out.println("Пользователь выбрал: " + select);
             } else {
