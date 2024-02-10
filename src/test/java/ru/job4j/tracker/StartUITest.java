@@ -6,16 +6,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StartUITest {
     @Test
+    void whenExit() {
+        Output output = new StubOutput();
+        Input input = new MockInput(
+                new String[]{"0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new ExitAction(output)
+        };
+        new StartUI(output).init(input, tracker, actions);
+        assertThat(output.toString()).isEqualTo(
+                "Меню:" + System.lineSeparator()
+                        + "0. Завершить программу" + System.lineSeparator()
+                        + "=== Завершение программы ===" + System.lineSeparator()
+        );
+    }
+
+    @Test
     void whenCreateItem() {
         Input input = new MockInput(
                 new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
-                new ExitAction()
+                new CreateAction(new StubOutput()),
+                new ExitAction(new StubOutput())
         };
-        new StartUI().init(input, tracker, actions);
+        new StartUI(new StubOutput()).init(input, tracker, actions);
         assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name");
     }
 
@@ -28,10 +46,10 @@ class StartUITest {
                 new String[]{"0", String.valueOf(item.getId()), replacedName, "1"}
         );
         UserAction[] actions = {
-                new ReplaceAction(),
-                new ExitAction()
+                new ReplaceAction(new StubOutput()),
+                new ExitAction(new StubOutput())
         };
-        new StartUI().init(input, tracker, actions);
+        new StartUI(new StubOutput()).init(input, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo(replacedName);
     }
 
@@ -43,10 +61,10 @@ class StartUITest {
                 new String[]{"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(),
-                new ExitAction()
+                new DeleteAction(new StubOutput()),
+                new ExitAction(new StubOutput())
         };
-        new StartUI().init(input, tracker, actions);
+        new StartUI(new StubOutput()).init(input, tracker, actions);
         assertThat(tracker.findById(item.getId())).isNull();
     }
 }
