@@ -19,7 +19,7 @@ public final class SingleTracker {
     }
 
     public Item findById(int id) {
-        return null;
+        return tracker.findById(id);
     }
 
     public Item[] findAll() {
@@ -28,10 +28,6 @@ public final class SingleTracker {
 
     public Item[] findByName(String key) {
         return tracker.findByName(key);
-    }
-
-    private int indexOf(int id) {
-        return 0;
     }
 
     public boolean replace(int id, Item item) {
