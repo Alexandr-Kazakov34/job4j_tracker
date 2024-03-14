@@ -11,6 +11,7 @@ public class UsageMap {
         map.put("Rem@.mail", "Sidorov V.V");
         map.put("Ikon@.ail", "Kazakov A.S");
         map.put("Non@maill", "Petrov A.S");
+        map.put("Non@maill", "Logvin A.S");
 
         for (String s : map.keySet()) {
             String readLine = map.get(s);
