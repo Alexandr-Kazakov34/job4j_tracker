@@ -16,7 +16,6 @@ public class PassportOffice {
     }
 
     public Citizen get(String passport) {
-        Citizen citizen = citizens.get(passport);
-        return citizen;
+        return citizens.get(passport);
     }
 }
