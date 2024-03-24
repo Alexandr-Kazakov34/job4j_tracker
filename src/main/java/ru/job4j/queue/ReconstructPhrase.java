@@ -14,16 +14,19 @@ public class ReconstructPhrase {
 
     private String getEvenElements() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < evenElements.size();) {
+        int size = evenElements.size();
+        for (int i = 0; i < size; i++) {
             stringBuilder.append(evenElements.poll());
             evenElements.poll();
+            size--;
         }
         return stringBuilder.toString();
     }
 
     private String getDescendingElements() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = descendingElements.size(); i > 0; i--) {
+        int size = descendingElements.size();
+        for (int i = 0; i < size; i++) {
             stringBuilder.append(descendingElements.pollLast());
         }
         return stringBuilder.toString();
