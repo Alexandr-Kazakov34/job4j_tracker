@@ -34,33 +34,51 @@ public class AnalyzeByMap {
     }
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
-        int countSubject = 0;
         Map<String, Integer> mapTemp = new LinkedHashMap<>();
+        int countSub = 0;
         for (Pupil pupil : pupils) {
-            String name = null;
-            int score = 0;
+            countSub++;
             for (Subject subject : pupil.subjects()) {
-                name = subject.name();
-                score = subject.score();
-                mapTemp.put(name, score);
-                countSubject++;
+                mapTemp.put(subject.name(), mapTemp.getOrDefault(subject.name(), 0) + subject.score());
             }
-            countSubject = 0;
         }
         ArrayList<Label> labels = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : mapTemp.entrySet()) {
             String key = entry.getKey();
-            Integer value = entry.getValue();
+            int value = entry.getValue() / countSub;
             labels.add(new Label(key, value));
         }
         return labels;
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
-        return null;
+        double sumScorePupil = 0;
+        ArrayList<Label> labels = new ArrayList<>();
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                sumScorePupil += subject.score();
+            }
+            labels.add(new Label(pupil.name(), sumScorePupil));
+            sumScorePupil = 0;
+        }
+        labels.sort(Comparator.naturalOrder());
+        return labels.get(labels.size() - 1);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        return null;
+        Map<String, Integer> mapTemp = new LinkedHashMap<>();
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                mapTemp.put(subject.name(), mapTemp.getOrDefault(subject.name(), 0) + subject.score());
+            }
+        }
+        ArrayList<Label> labels = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : mapTemp.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+            labels.add(new Label(key, value));
+        }
+        labels.sort(Comparator.naturalOrder());
+        return labels.get(labels.size() - 1);
     }
 }
