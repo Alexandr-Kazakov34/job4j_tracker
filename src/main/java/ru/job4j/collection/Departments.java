@@ -18,44 +18,10 @@ public class Departments {
     }
 
     public static void sortAsc(List<String> departments) {
-        Collections.sort(departments, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                String[] split1 = o1.split("/");
-                String[] split2 = o2.split("/");
-                int minLength = Math.min(split1.length, split2.length);
-
-                for (int i = 0; i < minLength; i++) {
-                    int comparison = split1[i].compareTo(split2[i]);
-                    if (comparison != 0) {
-                        return comparison;
-                    }
-                }
-                return split1.length - split2.length;
-            }
-        });
+        departments.sort(Comparator.naturalOrder());
     }
 
     public static void sortDesc(List<String> departments) {
-        Collections.sort(departments, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                String[] split1 = o1.split("/");
-                String[] split2 = o2.split("/");
-                int minLength = Math.min(split1.length, split2.length);
-
-                int comparison = split2[0].compareTo(split1[0]);
-                if (comparison != 0) {
-                    return comparison;
-                }
-                for (int i = 1; i < minLength; i++) {
-                    comparison = split1[i].compareTo(split2[i]);
-                    if (comparison != 0) {
-                        return comparison;
-                    }
-                }
-                return split1.length - split2.length;
-            }
-        });
+        departments.sort(new DepartmentsDescComparator());
     }
 }
