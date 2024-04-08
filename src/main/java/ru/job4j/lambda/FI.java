@@ -1,7 +1,9 @@
 package ru.job4j.lambda;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Stack;
 
 public class FI {
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class FI {
         Comparator<Attachment> comparator = (left, right) -> Integer.compare(left.getSize(), right.getSize());
         Arrays.sort(attachments, comparator);
 
-        Comparator<String> comparator2 = (left, right) -> Integer.compare(left.length(), right.length());
-        Comparator<String> comparator3 = (left, right) -> Integer.compare(right.length(), left.length());
+        Comparator<String> comparator2 = (left, right) -> left.compareTo(right);
+        Comparator<String> comparator3 = (left, right) -> right.compareTo(left);
     }
 }
