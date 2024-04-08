@@ -39,7 +39,7 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             countSub++;
             for (Subject subject : pupil.subjects()) {
-                mapTemp.put(subject.name(), mapTemp.getOrDefault(subject.name(), 0) + subject.score());
+                mapTemp.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         ArrayList<Label> labels = new ArrayList<>();
@@ -69,7 +69,7 @@ public class AnalyzeByMap {
         Map<String, Integer> mapTemp = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                mapTemp.put(subject.name(), mapTemp.getOrDefault(subject.name(), 0) + subject.score());
+                mapTemp.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         ArrayList<Label> labels = new ArrayList<>();
