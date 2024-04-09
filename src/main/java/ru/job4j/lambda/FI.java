@@ -16,6 +16,6 @@ public class FI {
         Arrays.sort(attachments, comparator);
 
         Comparator<String> comparator2 = (left, right) -> left.compareTo(right);
-        Comparator<String> comparator3 = (left, right) -> right.compareTo(left);
+        Comparator<String> comparator3 = (left, right) -> Integer.compare(left.length(), right.length());
     }
 }
