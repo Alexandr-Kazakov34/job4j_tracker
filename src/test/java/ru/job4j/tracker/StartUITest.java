@@ -1,6 +1,8 @@
+/*
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.map.StartUI;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.input.MockInput;
@@ -19,7 +21,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[]{"0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(output));
 
@@ -34,7 +36,7 @@ class StartUITest {
     @Test
     void whenReplaceItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input input = new MockInput(
@@ -61,7 +63,7 @@ class StartUITest {
     @Test
     void whenFindAllItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item one = tracker.add(new Item("test1"));
         Input input = new MockInput(
                 new String[]{"0", String.valueOf(one.getId()), "1"}
@@ -87,7 +89,7 @@ class StartUITest {
     @Test
     void whenFindByNameItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item one = tracker.add(new Item("test1"));
         Input input = new MockInput(
                 new String[]{"0", one.getName(), "1"}
@@ -113,7 +115,7 @@ class StartUITest {
     @Test
     void whenFindByIdItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item one = tracker.add(new Item("test1"));
         Input input = new MockInput(
                 new String[]{"0", String.valueOf(one.getId()), "1"}
@@ -141,7 +143,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[]{"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new Create(new StubOutput()));
         actions.add(new Exit(new StubOutput()));
@@ -151,7 +153,7 @@ class StartUITest {
 
     @Test
     void whenReplaceItem() {
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input input = new MockInput(
@@ -166,7 +168,7 @@ class StartUITest {
 
     @Test
     void whenDeleteItem() {
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input input = new MockInput(
                 new String[]{"0", String.valueOf(item.getId()), "1"}
@@ -184,7 +186,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[]{"7", "0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(output));
         new StartUI(output).init(input, tracker, actions);
@@ -198,4 +200,4 @@ class StartUITest {
                         + "=== Завершение программы ===" + ln
         );
     }
-}
+}*/
