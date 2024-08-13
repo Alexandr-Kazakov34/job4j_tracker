@@ -42,11 +42,11 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO items(name, created) VALUES (?,?)",
+        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO items(name, created) VALUES (?,?);",
                 Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
-            statement.setTimestamp(2, Timestamp.valueOf(String.valueOf(item.getCreated())));
-            statement.executeUpdate();
+            statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            statement.execute();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     item.setId(generatedKeys.getInt(1));
@@ -87,10 +87,14 @@ public class SqlTracker implements Store {
     @Override
     public List<Item> findAll() {
         ArrayList<Item> all = new ArrayList<>();
-        try (Statement statement = connection.createStatement()) {
-            ResultSet selectFromItems = statement.executeQuery("SELECT * FROM items");
-            while (selectFromItems.next()) {
-                all.add(new Item(selectFromItems.getInt(1), selectFromItems.getString(2)));
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM items;", Statement.RETURN_GENERATED_KEYS)) {
+            statement.execute();
+            try (ResultSet selectFromItems = statement.executeQuery()) {
+                while (selectFromItems.next()) {
+                    all.add(new Item(selectFromItems.getInt(1),
+                            selectFromItems.getString(2),
+                            selectFromItems.getTimestamp(3).toLocalDateTime()));
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

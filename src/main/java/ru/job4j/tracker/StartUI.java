@@ -1,7 +1,5 @@
-package ru.job4j.map;
+package ru.job4j.tracker;
 
-import ru.job4j.tracker.SqlTracker;
-import ru.job4j.tracker.Store;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.ConsoleInput;
 import ru.job4j.tracker.input.Input;
@@ -55,7 +53,7 @@ public class StartUI {
 
             new StartUI(output).init(input, tracker, actions);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
