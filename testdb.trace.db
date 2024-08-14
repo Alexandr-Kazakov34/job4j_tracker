@@ -1,40 +1,16 @@
-2024-08-14 13:39:35.233742+03:00 jdbc[3]: exception
+24-08-14 13:31:48.789658+03:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "DATABASECHANGELOGLOCK" не найдена
 Table "DATABASECHANGELOGLOCK" not found; SQL statement:
 SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42102-224]
-2024-08-14 13:39:41.125611+03:00 jdbc[3]: exception
+2024-08-14 13:32:11.685245+03:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
 Table "ITEMS" not found; SQL statement:
 INSERT INTO items(name, created) VALUES (?,?); [42102-224]
-2024-08-14 13:39:41.133590+03:00 jdbc[3]: exception
+2024-08-14 13:32:11.692227+03:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
 Table "ITEMS" not found; SQL statement:
 SELECT * FROM items; [42102-224]
-2024-08-14 13:39:41.140572+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-delete from items [42102-224]
-2024-08-14 13:40:40.028920+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-INSERT INTO items(name, created) VALUES (?,?); [42102-224]
-2024-08-14 13:40:40.035901+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-SELECT * FROM items; [42102-224]
-2024-08-14 13:40:40.040887+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-delete from items [42102-224]
-2024-08-14 13:42:17.547413+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-INSERT INTO items(name, created) VALUES (?,?); [42102-224]
-2024-08-14 13:42:17.555391+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-SELECT * FROM items; [42102-224]
-2024-08-14 13:42:17.561375+03:00 jdbc[3]: exception
+2024-08-14 13:32:11.699208+03:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
 Table "ITEMS" not found; SQL statement:
 delete from items [42102-224]
