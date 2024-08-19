@@ -1,16 +1,4 @@
-24-08-14 13:31:48.789658+03:00 jdbc[3]: exception
+2024-08-19 14:05:01.072849+03:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "DATABASECHANGELOGLOCK" не найдена
 Table "DATABASECHANGELOGLOCK" not found; SQL statement:
 SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42102-224]
-2024-08-14 13:32:11.685245+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-INSERT INTO items(name, created) VALUES (?,?); [42102-224]
-2024-08-14 13:32:11.692227+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-SELECT * FROM items; [42102-224]
-2024-08-14 13:32:11.699208+03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
-Table "ITEMS" not found; SQL statement:
-delete from items [42102-224]
