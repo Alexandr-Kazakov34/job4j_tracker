@@ -63,11 +63,11 @@ public class SqlTracker implements Store {
     public boolean replace(int id, Item item) {
         Item oldItem = findById(id);
         if (oldItem != null) {
-            try (Statement statement = connection.createStatement()) {
-                String sql = String.format("UPDATE items SET name = %s, created = %s WHERE items.id = %s",
-                        item.getName(),
-                        item.getCreated(),
-                        id);
+            try (PreparedStatement statement = connection.prepareStatement("UPDATE items SET name = ?, created = ? WHERE items.id = ?")) {
+                statement.setString(1, item.getName());
+                statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+                statement.setInt(3, id);
+                statement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -77,9 +77,9 @@ public class SqlTracker implements Store {
 
     @Override
     public void delete(int id) {
-        try (Statement statement = connection.createStatement()) {
-            String sql = String.format("DELETE FROM items WHERE items.id = %s",
-                    id);
+        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM items WHERE id = ?")) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

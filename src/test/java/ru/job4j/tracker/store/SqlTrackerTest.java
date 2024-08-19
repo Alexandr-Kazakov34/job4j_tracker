@@ -57,4 +57,62 @@ public class SqlTrackerTest {
         tracker.add(item);
         assertThat(tracker.findById(item.getId())).isEqualTo(item);
     }
+
+    @Test
+    public void whenReplaceItemThenItemIsReplaced() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("mainItem");
+        tracker.add(item);
+        Item newItem = new Item("newItem");
+        newItem.setId(item.getId());
+        boolean replace = tracker.replace(item.getId(), newItem);
+        Assertions.assertTrue(replace);
+        Item byId = tracker.findById(item.getId());
+        Assertions.assertEquals(byId, newItem);
+    }
+
+    @Test
+    public void whenDeleteItemThenItemIsDeleted() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("Item");
+        tracker.add(item);
+        tracker.delete(item.getId());
+        assertNull(tracker.findById(item.getId()));
+    }
+
+    @Test
+    public void whenFindAll() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item secondItem = new Item("item2");
+        Item thirdItem = new Item("item3");
+        tracker.add(item);
+        tracker.add(secondItem);
+        tracker.add(thirdItem);
+        List<Item> expected = List.of(item, secondItem, thirdItem);
+        assertThat(tracker.findAll()).isEqualTo(expected);
+    }
+
+    @Test
+    public void whenFindByName() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item secondItem = new Item("item2");
+        List<Item> expected = List.of(secondItem);
+        tracker.add(item);
+        tracker.add(secondItem);
+        assertThat(tracker.findByName("item2")).isEqualTo(expected);
+    }
+
+    @Test
+    public void whenFindById() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item secondItem = new Item("item2");
+        Item thirdItem = new Item("item3");
+        tracker.add(item);
+        tracker.add(secondItem);
+        tracker.add(thirdItem);
+        assertThat(tracker.findById(secondItem.getId())).isEqualTo(secondItem);
+    }
 }
