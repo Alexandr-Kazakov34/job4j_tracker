@@ -10,3 +10,4 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
     <include file="scripts/001_ddl_create_items_table.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
+
