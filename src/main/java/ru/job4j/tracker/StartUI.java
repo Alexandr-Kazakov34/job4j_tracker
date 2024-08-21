@@ -48,6 +48,8 @@ public class StartUI {
                     new Delete(output),
                     new FindById(output),
                     new FindByName(output),
+                    new CreateManyItems(output),
+                    new DeleteAllItems(output),
                     new Exit(output)
             );
 
